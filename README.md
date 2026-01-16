@@ -1,10 +1,4 @@
-Below is a **clean, professional, copy-paste-ready `README.md`**, written in **standard software documentation style**, with **no icons, no emojis, no marketing language**, and suitable for **direct use on GitHub**.
 
-You can paste this **exactly as-is** into your repository’s `README.md`.
-
----
-
-````markdown
 # Knowledge Assistant (Local RAG)
 
 **Status:** Active  
