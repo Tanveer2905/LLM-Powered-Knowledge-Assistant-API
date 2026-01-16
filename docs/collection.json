@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "b3e9c8f1-2d4a-4b5c-9e6f-8a7b6c5d4e3f",
+		"name": "Knowledge Assistant RAG",
+		"description": "API collection for the Local RAG Knowledge Assistant. Allows uploading PDFs and asking questions.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Ingest Documents",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"description": "Upload one or more PDF files here.",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/ingest/",
+					"host": ["{{base_url}}"],
+					"path": ["api", "ingest", ""]
+				},
+				"description": "Uploads PDF documents to the vector database. Appends to existing index."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Ask Question",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question\": \"What are the characteristics of particles?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/ask/",
+					"host": ["{{base_url}}"],
+					"path": ["api", "ask", ""]
+				},
+				"description": "Queries the database using natural language. Returns the answer and source files."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Clear Database",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/clear/",
+					"host": ["{{base_url}}"],
+					"path": ["api", "clear", ""]
+				},
+				"description": "Danger zone: Deletes all uploaded files and embeddings."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string",
+			"description": "The local server address"
+		}
+	]
+}

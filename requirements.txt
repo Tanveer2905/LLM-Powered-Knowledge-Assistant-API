@@ -1,0 +1,10 @@
+Django>=5.0
+djangorestframework
+sentence-transformers
+faiss-cpu
+langchain-community
+langchain-text-splitters
+pypdf
+transformers
+torch
+numpy
